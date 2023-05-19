@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "02c8e23d-6fd7-4fb2-a6cb-0ac611d761d3",
+		"name": "Countries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "19667935-02c8e23d-6fd7-4fb2-a6cb-0ac611d761d3"
+	},
+	"item": [
+		{
+			"name": "Get Countries By Name",
+			"id": "e2c3abf6-ebfd-486d-9246-7ea80392d714",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{countryurl}}/v3.1/name/India",
+					"host": [
+						"{{countryurl}}"
+					],
+					"path": [
+						"v3.1",
+						"name",
+						"India"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "country by capital",
+			"id": "e6bd6e55-e430-40b5-9cfb-371ee7b99a96",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{countryurl}}/v3.1/capital/delhi",
+					"host": [
+						"{{countryurl}}"
+					],
+					"path": [
+						"v3.1",
+						"capital",
+						"delhi"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				],
+				"id": "a99ec219-6ecc-4086-a404-29aa39793589"
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				],
+				"id": "eb4f17a7-1b0d-4364-a1f7-35b1519cbb0b"
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "74b6accc-713d-4447-a84b-1a5ab0854f8f",
+			"key": "countryurl",
+			"value": "https://restcountries.com/"
+		}
+	]
+}
