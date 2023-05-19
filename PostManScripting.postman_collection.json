@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "33b9b9ad-ba22-4b4a-9d98-3ef3e9ae5a74",
+		"name": "PostManScripting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "19667935"
+	},
+	"item": [
+		{
+			"name": "singleuser",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"url\", \"https://reqres.in\");\r",
+							"pm.globals.set(\"userid\", \"2\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"statuscode\"]=responseCode.code=\"200\";\r",
+							"pm.test(\"check ststus code\",function(){\r",
+							"    pm.response.to.have.statusCode(\"200\");\r",
+							"});\r",
+							"\r",
+							"//Multiple Assertions using chai BDD\r",
+							"pm.test(\"check id value\",function(){\r",
+							"    responseJson=pm.response.json();\r",
+							"    pm.expect(responseJson.data.id).to.eql(2);\r",
+							"});\r",
+							"\r",
+							"//Handling response that dont parse\r",
+							"pm.test(\"check email value\",function(){   \r",
+							"    pm.expect(pm.response.text()).to.include(\"janet.weaver@reqres.in\");\r",
+							"});\r",
+							"\r",
+							"//Statuscode any one value\r",
+							"pm.test(\"statis code any one\",function(){   \r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"\r",
+							"//Test Headers\r",
+							"pm.test(\"Content type present\",function(){   \r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"   \r",
+							"});\r",
+							"\r",
+							"//Content type value\r",
+							"pm.test(\"Content type compare\",function(){   \r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json; charset=utf-8\");\r",
+							"   \r",
+							"});\r",
+							"\r",
+							"//Response time\r",
+							"pm.test(\"Get Response time\",function(){   \r",
+							"    pm.expect(pm.response.responseTime).to.be.below(60);\r",
+							"   \r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{url}}/api/users/{{userid}}"
+			},
+			"response": []
+		}
+	]
+}
